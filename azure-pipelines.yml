@@ -12,7 +12,7 @@ pool:
 steps:
 - task: DownloadGitHubRelease@0
   inputs:
-    connection: 'oseduardo'
+    connection: 'github_oseduardo'
     userRepository: 'oseduardo/DVWA-master'
     defaultVersionType: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
