@@ -23,3 +23,16 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+- task: Veracode@3
+  inputs:
+    ConnectionDetailsSelection: 'Endpoint'
+    AnalysisService: 'Veracode'
+    veracodeAppProfile: 'DVWA-Azure'
+    version: '$(build.buildNumber)'
+    filepath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    createSandBox: false
+    createProfile: false
+    failTheBuildIfVeracodeScanDidNotInitiate: true
+    scanStatusCheckInterval: '60'
+    importResults: false
+    failBuildOnPolicyFail: true
