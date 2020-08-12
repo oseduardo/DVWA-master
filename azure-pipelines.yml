@@ -16,7 +16,8 @@ steps:
     repositoryName: 'oseduardo/DVWA-master'
     action: 'create'
     target: '$(Build.SourceVersion)'
-    tagSource: 'gitTag'
+    tagSource: 'userSpecifiedTag'
+    tag: 'latest'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
 - task: DownloadGitHubRelease@0
