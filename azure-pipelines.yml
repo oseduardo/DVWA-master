@@ -33,7 +33,6 @@ steps:
     userRepository: 'oseduardo/DVWA-master'
     defaultVersionType: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
-- script: stat '$(System.ArtifactsDirectory)'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(System.ArtifactsDirectory)'
@@ -41,6 +40,7 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+- script: stat '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
 #- task: Veracode@3
 #  inputs:
 #    ConnectionDetailsSelection: 'Endpoint'
