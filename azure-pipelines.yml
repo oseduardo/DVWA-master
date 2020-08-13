@@ -27,6 +27,7 @@ steps:
     defaultVersionType: 'specificTag'
     version: '$(Build.BuildId)'
     downloadPath: '$(System.ArtifactsDirectory)'
+- script: ls '$(System.ArtifactsDirectory)'
 - task: DownloadGitHubRelease@0
   inputs:
     connection: 'github_oseduardo'
