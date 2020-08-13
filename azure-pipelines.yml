@@ -18,7 +18,7 @@ steps:
     target: '$(Build.SourceVersion)'
     tagSource: 'userSpecifiedTag'
     tag: '$(Build.BuildId)'
-    assets: '$(Build.ArtifactStagingDirectory)/*.zip'
+    assets: '$(Build.ArtifactStagingDirectory)/*'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
 - script: ls '$(Build.ArtifactStagingDirectory)'
