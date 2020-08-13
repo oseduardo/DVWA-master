@@ -21,6 +21,7 @@ steps:
     assets: '$(Build.ArtifactStagingDirectory)/*'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
+- script: pwd
 - script: ls
 - task: DownloadGitHubRelease@0
   inputs:
