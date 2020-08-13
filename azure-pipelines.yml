@@ -30,7 +30,8 @@ steps:
     defaultVersionType: 'specificTag'
     version: '$(Build.BuildId)'
     downloadPath: '$(System.ArtifactsDirectory)'
-- script: ls '$(System.ArtifactsDirectory)'
+- script: pwd
+- script: ls
 #- task: ArchiveFiles@2
 #  inputs:
 #    rootFolderOrFile: '$(System.ArtifactsDirectory)'
