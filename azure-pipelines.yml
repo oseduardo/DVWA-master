@@ -10,17 +10,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-#- task: GitHubRelease@1
-#  inputs:
-#    gitHubConnection: 'github_oseduardo'
-#    repositoryName: 'oseduardo/DVWA-master'
-#    action: 'create'
-#    target: '$(Build.SourceVersion)'
-#    tagSource: 'userSpecifiedTag'
-#    tag: '$(Build.BuildId)'
-#    assets: '$(Build.ArtifactStagingDirectory)/*'
-#    changeLogCompareToRelease: 'lastFullRelease'
-#    changeLogType: 'commitBased'
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: 'github_oseduardo'
+    repositoryName: 'oseduardo/DVWA-master'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'userSpecifiedTag'
+    tag: '$(Build.BuildId)'
+    assets: '$(Build.ArtifactStagingDirectory)/*'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
 - script: ls '$(Build.ArtifactStagingDirectory)'
 - task: DownloadGitHubRelease@0
   inputs:
