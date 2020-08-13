@@ -10,8 +10,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo $(Release.ReleaseId)
-- script: exit
 - task: GitHubRelease@1
   inputs:
     gitHubConnection: 'github_oseduardo'
@@ -35,6 +33,7 @@ steps:
     userRepository: 'oseduardo/DVWA-master'
     defaultVersionType: 'latest'
     downloadPath: '$(System.ArtifactsDirectory)'
+- script: stat '$(System.ArtifactsDirectory)'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(System.ArtifactsDirectory)'
@@ -42,16 +41,16 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
-- task: Veracode@3
-  inputs:
-    ConnectionDetailsSelection: 'Endpoint'
-    AnalysisService: 'Veracode'
-    veracodeAppProfile: 'DVWA-Azure'
-    version: '$(build.buildNumber)'
-    filepath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    createSandBox: false
-    createProfile: false
-    failTheBuildIfVeracodeScanDidNotInitiate: true
-    scanStatusCheckInterval: '60'
-    importResults: false
-    failBuildOnPolicyFail: true
+#- task: Veracode@3
+#  inputs:
+#    ConnectionDetailsSelection: 'Endpoint'
+#    AnalysisService: 'Veracode'
+#    veracodeAppProfile: 'DVWA-Azure'
+#    version: '$(build.buildNumber)'
+#    filepath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+#    createSandBox: false
+#    createProfile: false
+#    failTheBuildIfVeracodeScanDidNotInitiate: true
+#    scanStatusCheckInterval: '60'
+#    importResults: false
+#    failBuildOnPolicyFail: true
