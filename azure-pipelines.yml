@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo '$(Release.ReleaseId)'
+- script: echo $(Release.ReleaseId)
 - script: exit
 - task: GitHubRelease@1
   inputs:
