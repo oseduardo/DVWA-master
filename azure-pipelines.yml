@@ -18,8 +18,10 @@ steps:
     target: '$(Build.SourceVersion)'
     tagSource: 'userSpecifiedTag'
     tag: '$(Build.BuildId)'
+    assets: '$(Build.ArtifactStagingDirectory)/*.zip'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
+- script: ls '$(Build.ArtifactStagingDirectory)'
 - task: DownloadGitHubRelease@0
   inputs:
     connection: 'github_oseduardo'
@@ -34,7 +36,6 @@ steps:
 #    archiveType: 'zip'
 #    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
 #    replaceExistingArchive: true
-- script: ls '$(System.ArtifactsDirectory)'
 #- task: Veracode@3
 #  inputs:
 #    ConnectionDetailsSelection: 'Endpoint'
