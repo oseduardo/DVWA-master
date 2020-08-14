@@ -25,7 +25,12 @@ steps:
 - script: ls
 - task: CmdLine@2
   inputs:
-    script: 'echo --- DOWNLOADING RELEASE ''$(Build.BuildId).zip'' ---'
+    script: |
+      echo --- DOWNLOADING RELEASE '$(Build.BuildId).zip' ---
+      
+      curl -vLJO -H 'Authorization: token 7baac910dbabf8478a119551438825ed8d12845e' 'https://api.github.com/repos/oseduardo/DVWA-master/releases/assets/$(Build.BuildId).zip'
+      
+      ls
     failOnStderr: true
 - task: DownloadGitHubRelease@0
   inputs:
