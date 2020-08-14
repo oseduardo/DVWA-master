@@ -25,7 +25,7 @@ steps:
 - script: ls
 - task: CmdLine@2
   inputs:
-    script: 'echo ---DOWNLOADING RELEASE ''$(Build.BuildId).zip'''
+    script: 'echo --- DOWNLOADING RELEASE ''$(Build.BuildId).zip'' ---'
     failOnStderr: true
 - task: DownloadGitHubRelease@0
   inputs:
