@@ -23,6 +23,10 @@ steps:
     changeLogType: 'commitBased'
 - script: pwd
 - script: ls
+- task: CmdLine@2
+  inputs:
+    script: 'echo ---DOWNLOADING RELEASE ''$(Build.BuildId).zip'''
+    failOnStderr: true
 - task: DownloadGitHubRelease@0
   inputs:
     connection: 'github_oseduardo'
