@@ -24,7 +24,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo Downloding artifacts...
+      echo Downloding artifacts fro GitHub...
       mkdir ../latestrelease
       curl -o ../latestrelease/latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
       ls ../latestrelease
