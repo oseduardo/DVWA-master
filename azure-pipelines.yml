@@ -28,16 +28,16 @@ steps:
       curl -o '$(System.ArtifactsDirectory)'/latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
       chmod 755 '$(System.ArtifactsDirectory)'/latestrelease.zip
       ls '$(System.ArtifactsDirectory)'
-#- task: Veracode@3
-#  inputs:
-#    ConnectionDetailsSelection: 'Endpoint'
-#    AnalysisService: 'Veracode'
-#    veracodeAppProfile: 'DVWA-Azure'
-#    version: '$(build.buildNumber)'
-#    filepath: '../latestrelease/latestrelease.zip'
-#    createSandBox: false
-#    createProfile: false
-#    failTheBuildIfVeracodeScanDidNotInitiate: true
-#    scanStatusCheckInterval: '60'
-#    importResults: false
-#    failBuildOnPolicyFail: true
+- task: Veracode@3
+  inputs:
+    ConnectionDetailsSelection: 'Endpoint'
+    AnalysisService: 'Veracode'
+    veracodeAppProfile: 'DVWA-Azure'
+    version: '$(build.buildNumber)'
+    filepath: '$(System.ArtifactsDirectory)/latestrelease.zip'
+    createSandBox: false
+    createProfile: false
+    failTheBuildIfVeracodeScanDidNotInitiate: true
+    scanStatusCheckInterval: '60'
+    importResults: false
+    failBuildOnPolicyFail: true
