@@ -27,7 +27,7 @@ steps:
       echo Downloding artifacts fro GitHub... 
       curl -o '$(System.ArtifactsDirectory)'/latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
       chmod 755 '$(System.ArtifactsDirectory)'/latestrelease.zip
-      ls -lh '$(System.ArtifactsDirectory)'/latestrelease.zip
+      ls -l --b=M '$(System.ArtifactsDirectory)'/latestrelease.zip | cut -d " " -f5
 #- task: Veracode@3
 #  inputs:
 #    ConnectionDetailsSelection: 'Endpoint'
