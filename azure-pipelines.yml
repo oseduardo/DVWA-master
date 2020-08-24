@@ -27,33 +27,16 @@ steps:
       echo Downloding artifacts fro GitHub...
       mkdir ../latestrelease
       curl -o ../latestrelease/latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
-      ls ../latestrelease
-#- task: DownloadGitHubRelease@0
-#  inputs:
-#    connection: 'github_oseduardo'
-#    userRepository: 'oseduardo/DVWA-master'
-#    defaultVersionType: 'specificTag'
-#    version: '$(Build.BuildId)'
-#    downloadPath: '$(System.ArtifactsDirectory)'
-#- script: pwd
-#- script: ls '$(System.ArtifactsDirectory)'
-#- task: ArchiveFiles@2
-#  inputs:
-#    rootFolderOrFile: '$(System.ArtifactsDirectory)'
-#    includeRootFolder: true
-#    archiveType: 'zip'
-#    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-#    replaceExistingArchive: true
-#- task: Veracode@3
-#  inputs:
-#    ConnectionDetailsSelection: 'Endpoint'
-#    AnalysisService: 'Veracode'
-#    veracodeAppProfile: 'DVWA-Azure'
-#    version: '$(build.buildNumber)'
-#    filepath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-#    createSandBox: false
-#    createProfile: false
-#    failTheBuildIfVeracodeScanDidNotInitiate: true
-#    scanStatusCheckInterval: '60'
-#    importResults: false
-#    failBuildOnPolicyFail: true
+- task: Veracode@3
+  inputs:
+    ConnectionDetailsSelection: 'Endpoint'
+    AnalysisService: 'Veracode'
+    veracodeAppProfile: 'DVWA-Azure'
+    version: '$(build.buildNumber)'
+    filepath: ..latestrelease/$(Build.BuildId).zip'
+    createSandBox: false
+    createProfile: false
+    failTheBuildIfVeracodeScanDidNotInitiate: true
+    scanStatusCheckInterval: '60'
+    importResults: false
+    failBuildOnPolicyFail: true
