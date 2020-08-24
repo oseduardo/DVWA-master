@@ -28,6 +28,7 @@ steps:
       mkdir ../latestrelease
       curl -o ../latestrelease/latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
       chmod 755 ../latestrelease/latestrelease.zip
+      ls ../latestrelease
       ls '$(System.ArtifactsDirectory)'
 #- task: Veracode@3
 #  inputs:
