@@ -22,25 +22,16 @@ steps:
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
 - script: pwd
-- script: ls
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo --- DOWNLOADING RELEASE '$(Build.BuildId).zip' ---
-      
-      curl -vLJO -H 'Authorization: token 7baac910dbabf8478a119551438825ed8d12845e' 'https://api.github.com/repos/oseduardo/DVWA-master/releases/assets/$(Build.BuildId).zip'
-      
-      ls
-    failOnStderr: true
-- task: DownloadGitHubRelease@0
-  inputs:
-    connection: 'github_oseduardo'
-    userRepository: 'oseduardo/DVWA-master'
-    defaultVersionType: 'specificTag'
-    version: '$(Build.BuildId)'
-    downloadPath: '$(System.ArtifactsDirectory)'
-- script: pwd
-- script: ls '$(System.ArtifactsDirectory)'
+- script: ls '$(Build.ArtifactStagingDirectory)'
+#- task: DownloadGitHubRelease@0
+#  inputs:
+#    connection: 'github_oseduardo'
+#    userRepository: 'oseduardo/DVWA-master'
+#    defaultVersionType: 'specificTag'
+#    version: '$(Build.BuildId)'
+#    downloadPath: '$(System.ArtifactsDirectory)'
+#- script: pwd
+#- script: ls '$(System.ArtifactsDirectory)'
 #- task: ArchiveFiles@2
 #  inputs:
 #    rootFolderOrFile: '$(System.ArtifactsDirectory)'
