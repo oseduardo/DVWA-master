@@ -26,8 +26,8 @@ steps:
     script: |
       echo Downloding artifacts...
       
-      curl -O https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
-      ls
+      curl -o ../latestrelease/ https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
+      ls ../latestrelease
 #- task: DownloadGitHubRelease@0
 #  inputs:
 #    connection: 'github_oseduardo'
