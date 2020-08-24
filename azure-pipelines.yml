@@ -24,20 +24,21 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo Downloding artifacts fro GitHub...
+      echo Downloding artifacts fro GitHub... 
+      ls '$(System.ArtifactsDirectory)'
       mkdir ../latestrelease
       curl -o ../latestrelease/latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
       chmod 755 ../latestrelease/latestrelease.zip
-- task: Veracode@3
-  inputs:
-    ConnectionDetailsSelection: 'Endpoint'
-    AnalysisService: 'Veracode'
-    veracodeAppProfile: 'DVWA-Azure'
-    version: '$(Date:yyyyMMdd).Release_$(build.buildNumber)'
-    filepath: '../latestrelease/latestrelease.zip'''
-    createSandBox: false
-    createProfile: false
-    failTheBuildIfVeracodeScanDidNotInitiate: true
-    scanStatusCheckInterval: '60'
-    importResults: false
-    failBuildOnPolicyFail: true
+#- task: Veracode@3
+#  inputs:
+#    ConnectionDetailsSelection: 'Endpoint'
+#    AnalysisService: 'Veracode'
+#    veracodeAppProfile: 'DVWA-Azure'
+#    version: '$(build.buildNumber)'
+#    filepath: '../latestrelease/latestrelease.zip'
+#    createSandBox: false
+#    createProfile: false
+#    failTheBuildIfVeracodeScanDidNotInitiate: true
+#    scanStatusCheckInterval: '60'
+#    importResults: false
+#    failBuildOnPolicyFail: true
