@@ -33,7 +33,7 @@ steps:
     AnalysisService: 'Veracode'
     veracodeAppProfile: 'DVWA-Azure'
     version: '$(build.buildNumber)'
-    filepath: ../latestrelease/$(Build.BuildId).zip'
+    filepath: ../latestrelease/latestrelease.zip'
     createSandBox: false
     createProfile: false
     failTheBuildIfVeracodeScanDidNotInitiate: true
