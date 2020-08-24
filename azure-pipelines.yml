@@ -22,7 +22,7 @@ steps:
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
 - script: pwd
-- script: ls '$(Build.ArtifactStagingDirectory)'
+- script: ls '$(System.ArtifactsDirectory)'
 #- task: DownloadGitHubRelease@0
 #  inputs:
 #    connection: 'github_oseduardo'
