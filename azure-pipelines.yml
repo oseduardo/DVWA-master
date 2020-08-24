@@ -25,10 +25,8 @@ steps:
   inputs:
     script: |
       echo Downloding artifacts fro GitHub... 
-      mkdir ../latestrelease
-      curl -o ../latestrelease/latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
-      chmod 755 ../latestrelease/latestrelease.zip
-      ls ../latestrelease
+      curl -o '$(System.ArtifactsDirectory)'/latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
+      chmod 755 '$(System.ArtifactsDirectory)'/latestrelease.zip
       ls '$(System.ArtifactsDirectory)'
 #- task: Veracode@3
 #  inputs:
