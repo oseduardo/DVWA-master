@@ -26,7 +26,7 @@ steps:
     script: |
       echo Downloding artifacts fro GitHub... 
       curl -o latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
-      ls -l *
+      ls -l --block-size=M *
 #- task: Veracode@3
 #  inputs:
 #    ConnectionDetailsSelection: 'Endpoint'
