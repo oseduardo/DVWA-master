@@ -12,17 +12,17 @@ pool:
 steps:
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
+    rootFolderOrFile: '/home/vsts/work/1/s'
+    includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '/home/vsts/work/1/s/$(Build.BuildId).zip'
     replaceExistingArchive: true
     verbose: true
 - task: CmdLine@2
   inputs:
     script: |
       pwd
-      ls '$(Build.BinariesDirectory)'
+      ls '/home/vsts/work/1/s'
 #      echo Downloding artifacts from GitHub... 
 #      curl -o latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
 #      unzip -l latestrelease.zip
