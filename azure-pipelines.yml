@@ -10,22 +10,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-#- task: GitHubRelease@1
-#  inputs:
-#    gitHubConnection: 'github_oseduardo'
-#    repositoryName: 'oseduardo/DVWA-master'
-#    action: 'create'
-#    target: '$(Build.SourceVersion)'
-#    tagSource: 'userSpecifiedTag'
-#    tag: '$(Build.BuildId)'
-#    assets: '$(Build.ArtifactStagingDirectory)/*'
-#    changeLogCompareToRelease: 'lastFullRelease'
-#    changeLogType: 'commitBased'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+    verbose: true
 - task: CmdLine@2
   inputs:
     script: |
       pwd
-      ls
+      ls '$(Build.BinariesDirectory)'
 #      echo Downloding artifacts from GitHub... 
 #      curl -o latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
 #      unzip -l latestrelease.zip
