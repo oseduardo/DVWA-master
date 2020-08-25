@@ -24,18 +24,12 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo Downloding artifacts from GitHub... 
-      curl -o latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
+      pwd
+      ls
+#      echo Downloding artifacts from GitHub... 
+#      curl -o latestrelease.zip https://github.com/oseduardo/DVWA-master/archive/'$(Build.BuildId)'.zip
 #      unzip -l latestrelease.zip
 #      ls -l --block-size=M *
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'latestrelease.zip'
-    destinationFolder: 'NewLatestRelease'
-    cleanDestinationFolder: true
-- task: CmdLine@2
-  inputs:
-    script: 'ls NewLatestRelease'
 #- task: Veracode@3
 #  inputs:
 #    ConnectionDetailsSelection: 'Endpoint'
